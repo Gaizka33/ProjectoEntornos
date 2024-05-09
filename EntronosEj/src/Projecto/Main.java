@@ -15,6 +15,7 @@ public class Main {
 
 		MensajeTexto mensajeTexto1 = new MensajeTexto(usuario1, usuario2, "¡Hola, Usuario2!");
 		usuario1.enviarMensaje(usuario2, mensajeTexto1);
+		usuario1.enviarMensaje(usuario3, mensajeTexto1);
 
 		MensajeMultimedia mensajeMultimedia1 = new MensajeMultimedia(usuario2, usuario1, "imagen.jpg", 1024);
 		usuario2.enviarMensaje(usuario1, mensajeMultimedia1);
