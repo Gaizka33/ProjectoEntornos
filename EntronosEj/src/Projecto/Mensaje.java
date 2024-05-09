@@ -1,12 +1,14 @@
 package Projecto;
 
-abstract class Mensaje {
+class Mensaje {
     private Usuario remitente;
     private Usuario destinatario;
+    private String contenido;
 
-    public Mensaje(Usuario remitente, Usuario destinatario) {
+    public Mensaje(Usuario remitente, Usuario destinatario, String contenido) {
         this.remitente = remitente;
         this.destinatario = destinatario;
+        this.contenido = contenido;
     }
 
     public Usuario getRemitente() {
@@ -17,5 +19,7 @@ abstract class Mensaje {
         return destinatario;
     }
 
-    public abstract String getContenido();
+    public String getContenido() {
+        return contenido;
+    }
 }

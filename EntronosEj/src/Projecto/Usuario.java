@@ -3,17 +3,11 @@ package Projecto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Usuario {
+class Usuario {
 	private String numeroTelefono;
 	private String nombre;
 	private TipoUsuario tipoUsuario;
 	private List<Mensaje> mensajesRecibidos;
-
-	public Usuario(String numeroTelefono, TipoUsuario tipoUsuario) {
-		this.numeroTelefono = numeroTelefono;
-		this.tipoUsuario = tipoUsuario;
-		this.mensajesRecibidos = new ArrayList<>();
-	}
 
 	public Usuario(String numeroTelefono, String nombre, TipoUsuario tipoUsuario) {
 		this.numeroTelefono = numeroTelefono;
@@ -26,37 +20,38 @@ public class Usuario {
 		return numeroTelefono;
 	}
 
-	public void setNumeroTelefono(String numeroTelefono) {
-		this.numeroTelefono = numeroTelefono;
-	}
-
 	public String getNombre() {
 		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
 	}
 
 	public TipoUsuario getTipoUsuario() {
 		return tipoUsuario;
 	}
 
-	public void setTipoUsuario(TipoUsuario tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
-	}
-
 	public void recibirMensaje(Mensaje mensaje) {
 		mensajesRecibidos.add(mensaje);
 	}
 
+	public void enviarMensaje(Usuario destinatario, Mensaje mensaje) {
+		destinatario.recibirMensaje(mensaje);
+	}
+
+	// Método para obtener los mensajes visibles para este usuario
 	public List<Mensaje> getMensajesVisibles() {
 		List<Mensaje> mensajesVisibles = new ArrayList<>();
 		for (Mensaje mensaje : mensajesRecibidos) {
-			if (tipoUsuario == TipoUsuario.ADMINISTRADOR || mensaje.getDestinatario() == this) {
+			if (tipoUsuario == TipoUsuario.NORMAL || mensaje.getDestinatario() == this) {
 				mensajesVisibles.add(mensaje);
+			}
+			if (tipoUsuario == TipoUsuario.ADMINISTRADOR) {
+				return mensajesRecibidos;
 			}
 		}
 		return mensajesVisibles;
 	}
+
+	public List<Mensaje> getMensajesRecibidos() {
+		return mensajesRecibidos;
+	}
+
 }
