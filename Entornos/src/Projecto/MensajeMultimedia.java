@@ -5,7 +5,7 @@ package Projecto;
  */
 class MensajeMultimedia extends Mensaje {
     private String archivo;
-    private int tamaño;
+    private int tamano;
 
     /**
      * Constructor de la clase MensajeMultimedia.
@@ -13,12 +13,12 @@ class MensajeMultimedia extends Mensaje {
      * @param remitente   el usuario remitente del mensaje
      * @param destinatario el usuario destinatario del mensaje
      * @param archivo     el nombre del archivo multimedia
-     * @param tamaño      el tamaño del archivo multimedia
+     * @param tamano      el tamaño del archivo multimedia
      */
-    public MensajeMultimedia(Usuario remitente, Usuario destinatario, String archivo, int tamaño) {
+    public MensajeMultimedia(Usuario remitente, Usuario destinatario, String archivo, int tamano) {
         super(remitente, destinatario, "Archivo multimedia: " + archivo);
         this.archivo = archivo;
-        this.tamaño = tamaño;
+        this.tamano = tamano;
     }
 
     /**
@@ -35,7 +35,7 @@ class MensajeMultimedia extends Mensaje {
      *
      * @return el tamaño del archivo multimedia
      */
-    public int getTamaño() {
-        return tamaño;
+    public int getTamano() {
+        return tamano;
     }
 }
